@@ -5,17 +5,26 @@
 
 format long
 
-StartingTime=20160101.000000; % Starting time of the simulation
-EndTime=20160105.000000; %End time of the simulation
+% StartingTime=20160101.000000; % Starting time of the simulation
+% EndTime=20160105.000000; %End time of the simulation
+
+StartingTime=20241101.000000; % Starting time of the simulation
+EndTime=20241105.000000; %End time of the simulation
+
 Cmesh=5000; %Computational grid distance between grid point (in m)
 
-latB=ncread('NCfiles\Bathymetry.nc','lat');
-lonB=ncread('NCfiles\Bathymetry.nc','lon');
-lonE=ncread('NCfiles\windwave.nc','longitude');
-latE=ncread('NCfiles\windwave.nc','latitude');
+% latB=ncread('NCfiles\Bathymetry.nc','lat');
+% lonB=ncread('NCfiles\Bathymetry.nc','lon');
+% lonE=ncread('NCfiles\windwave.nc','longitude');
+% latE=ncread('NCfiles\windwave.nc','latitude');
+
+latB=ncread('NCfiles\batimeria_rj_gebco2024.nc','lat');
+lonB=ncread('NCfiles\batimeria_rj_gebco2024.nc','lon');
+lonE=ncread('NCfiles\windwave_rj_era5_202411.nc','longitude');
+latE=ncread('NCfiles\windwave_rj_era5_202411.nc','latitude');
 
 %Name of file to be run and project description.
-fid = fopen('LebaneseJanRun.swn','w');
+fid = fopen('RJ.swn','w');
 fprintf(fid,'%s\n','!***********************  HEADING  ****************************************');
 fprintf(fid,'%s\n','Project ''Jan Run'' ''1''');
 fprintf(fid,'%s\n','!*********************  MODEL Input  **************************************');
@@ -77,7 +86,7 @@ fprintf(fid,'%s\n','NUM STOPC NONSTAT 1'); %The higher the number the better the
 fprintf(fid,'%s\n','!*********************** OUTPUT REQUESTS *******************************');
 fprintf(fid,'%s\n',['FRA ''FRA01'' ' num2str(floor(CgridOX*1000)) ' ' num2str(floor(CgridOY*1000)) ' 0 ' num2str(floor(CgridLX)) ' ' num2str(floor(CgridLY))...
     ' ' num2str(floor(CgridLX/Cmesh)-1) ' ' num2str(floor(CgridLY/Cmesh)-1) ]);
-fprintf(fid,'%s\n',['BLO ''FRA01'' NOHEAD ''.\Outputs\H-sig.mat'' LAY 3 HS 1 OUTPUT ' num2str(StartingTime) ' 30 MIN']);    %sigificant wave height
+fprintf(fid,'%s\n',['BLO ''FRA01'' NOHEAD ''.\Outputs\H-sig.nc'' LAY 3 HS 1 OUTPUT ' num2str(StartingTime) ' 30 MIN']);    %sigificant wave height
 fprintf(fid,'%s\n',['BLO ''FRA01'' NOHEAD ''.\Outputs\Dir.mat'' LAY 3 DIR 1 OUTPUT ' num2str(StartingTime) ' 30 MIN']);   %Peak direction
 fprintf(fid,'%s\n',['BLO ''FRA01'' NOHEAD ''.\Outputs\TM01.mat'' LAY 3 TM01 1 OUTPUT ' num2str(StartingTime) ' 30 MIN']);  %mean absolute wave period
 fprintf(fid,'%s\n',['BLO ''FRA01'' NOHEAD ''.\Outputs\Wind.mat'' LAY 3 WIND 1 OUTPUT ' num2str(StartingTime) ' 30 MIN']);  %WIND
@@ -92,6 +101,6 @@ fprintf(fid,'%s\n','STOP');
 fclose(fid);
 
 % the following runs swan if you changed the name of the file edit it below
-%!swanrun LebaneseJanRun& 
+!swanrun RJ& 
 
 clearvars
