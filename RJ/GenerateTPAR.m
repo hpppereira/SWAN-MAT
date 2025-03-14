@@ -4,9 +4,9 @@ function [SWANBOU]=GenerateTPAR(StartingTime,EndTime,Wdx,Wdy,Distx,Disty)
 %origin(34.7E 32.85N) also time should be changed currently time difference
 %is 6 hours
 
-Hs=ncread('NCfiles\windwave_rj_era5_202411.nc','swh');
-Theta=ncread('NCfiles\windwave_rj_era5_202411.nc','mwd');
-Period=ncread('NCfiles\windwave_rj_era5_202411.nc','mwp');
+Hs=ncread('NCfiles\windwave_rj_era5_050_202411.nc','swh');
+Theta=ncread('NCfiles\windwave_rj_era5_050_202411.nc','mwd');
+Period=ncread('NCfiles\windwave_rj_era5_050_202411.nc','mwp');
 NS=length(Hs(:,1,1));
 EW=length(Hs(1,:,1));
 

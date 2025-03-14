@@ -1,7 +1,7 @@
 function []=GeneratingWindECMWF(StartingTime,EndTime)
 %ECMWF WIND
-WINDU=ncread('NCfiles\windwave_rj_era5_202411.nc','u10');
-WINDV=ncread('NCfiles\windwave_rj_era5_202411.nc','v10');
+WINDU=ncread('NCfiles\windwave_rj_era5_050_202411.nc','u10');
+WINDV=ncread('NCfiles\windwave_rj_era5_050_202411.nc','v10');
 WindSeriesID = fopen('Inputs\Wind\WindSeries.wndini','w');
 OriginalTime=20241101.000000;
 StartT1=(StartingTime-OriginalTime);

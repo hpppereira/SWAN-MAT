@@ -1,4 +1,9 @@
+venv/
+fig/
+
 RJ/venv/
 RJ/Outputs/
-Inputs/
-NCfiles/
+RJ/Inputs/
+RJ/NCfiles/
+
+*.nc

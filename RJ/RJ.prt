@@ -1,6 +1,6 @@
 1
 
-                    Execution started at 20250314.015019         
+                    Execution started at 20250314.042403         
 
 
 
@@ -75,7 +75,7 @@
     
  FRA 'FRA01' 50958 55661 0 309126 111322 60 21
     
- BLO 'FRA01' NOHEAD '.\Outputs\H-sig.nc' LAY 3 HS 1 OUTPUT 20241101 30 MIN
+ BLO 'FRA01' NOHEAD '.\Outputs\H-sig.mat' LAY 3 HS 1 OUTPUT 20241101 30 MIN
     
  BLO 'FRA01' NOHEAD '.\Outputs\Dir.mat' LAY 3 DIR 1 OUTPUT 20241101 30 MIN
     
