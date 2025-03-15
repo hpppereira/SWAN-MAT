@@ -9,10 +9,10 @@ format long
 % EndTime=20160105.000000; %End time of the simulation
 
 StartingTime=20241101.000000; % Starting time of the simulation
-EndTime=20241105.000000; %End time of the simulation
+EndTime=20241130.000000; %End time of the simulation
 
 % Cmesh=5000; %Computational grid distance between grid point (in m)
-Cmesh=5000; %Computational grid distance between grid point (in m)
+Cmesh=500; %Computational grid distance between grid point (in m)
 
 % latB=ncread('NCfiles\Bathymetry.nc','lat');
 % lonB=ncread('NCfiles\Bathymetry.nc','lon');
