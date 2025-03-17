@@ -19,8 +19,8 @@ Cmesh=500; %Computational grid distance between grid point (in m)
 % lonE=ncread('NCfiles\windwave.nc','longitude');
 % latE=ncread('NCfiles\windwave.nc','latitude');
 
-latB=ncread('NCfiles\batimeria_rj_gebco2024.nc','lat');
-lonB=ncread('NCfiles\batimeria_rj_gebco2024.nc','lon');
+latB=ncread('NCfiles\batimetria_rj_gebco2024.nc','lat');
+lonB=ncread('NCfiles\batimetria_rj_gebco2024.nc','lon');
 lonE=ncread('NCfiles\windwave_rj_era5_050_202411.nc','longitude');
 latE=ncread('NCfiles\windwave_rj_era5_050_202411.nc','latitude');
 
@@ -58,7 +58,7 @@ Bdy=pos2dist(latB(1),lonB(1),latB(2),lonB(1),1)*1000;
 
 fprintf(fid,'%s\n',['INP BOT ' num2str(floor(BOx))  ' ' num2str(floor(BOy)) ' 0 '  num2str(length(lonB)-1) ' ' num2str(length(latB)-1) ...
     ' ' num2str(floor(Bdx)) ' ' num2str(floor(Bdy))]);
-fprintf(fid,'%s\n','READ BOT -1 ''.\Inputs\Bathymetry.bot'' ');
+fprintf(fid,'%s\n','READ BOT -1 ''.\Inputs\RJ_batimetria1.bot'' ');
 
 %Wind
 %The wind files are generated in the following directory .\Inputs\WInd\

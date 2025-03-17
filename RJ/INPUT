@@ -1,0 +1,76 @@
+!***********************  HEADING  ****************************************
+Project 'SWAN stationaty' '1'
+!
+! Testes com condicoes estacionarias para o Rio de Janeiro
+!
+! Date of simulation: arbitrary, different wind and wave conditions
+!
+! No currents
+! Winds
+! Boundary Hs, tp and Dir from global model or constant
+!
+!*********************  MODEL Input  **************************************
+!
+! Nautical convention for wind and wave directions = 'from' CW from North
+!
+SET NAUT
+COORD SPHE
+!
+!*********************  MODEL GRID Input  **************************************
+!
+!MODE NONST TWOD
+MODE STAT TWOD
+!
+CGRID REG -44.0 -23.5 0 4. 2. 479 239 CIR 24 0.03 1
+!
+! numero de linha e de coluna menos 1
+!INP BOT -43.5 -23.2 0 479 239 0.00416667 0.00416667
+!READ BOT 1 '.\Inputs\RJ_batimetria.bot'
+!
+INPGRID BOTTOM -44.0 -23.5 0. 479 239 0.00416667 0.00416667 EXC -99999.
+READINP BOTTOM 1. '.\Inputs\RJ_batimetria.bot' 3 0 FREE
+!
+!
+!INP WI 0 0 0 8 4 51521 55661 NONSTAT 20241101 6 HR 20241130
+!READ WI 1 SERI '.\Inputs\WInd\WindSeries.wndini' 
+!
+!
+! Optional steady wind
+WIND 20 45.
+!
+!
+! Boundary wave input - JONSWAP spectrum with Hs = 2m, Tp = 9s,
+! mean direction = 80 (from), spread = 15 (swell)
+!
+!
+BOUN SHAP JON PEAK DSPR POW
+BOUN SIDE E CON PAR 3 14. 220. 15
+BOUN SIDE W CON PAR 3 14. 220. 15
+BOUN SIDE S CON PAR 3 14. 220. 15
+!
+!
+GEN3
+BREA
+FRIC MAD
+!
+!
+!
+!*********************  MODEL GRID Input  **************************************
+!
+GROUP 'grid1' 1 200 1 90
+!
+! Output points in problem coordinates
+BLOCK 'grid1' NOHEAD 'Outputs/RJ_teste_01_param.mat' LAY 1 DEP HS TPS
+BLOCK 'grid1' NOHEAD 'Outputs/RJ_teste_01_grid.mat' XP YP
+BLOCK 'grid1' NOHEAD 'Outputs/RJ_teste_01_bot.mat' LAY 3 BOTL 1
+!
+!
+!
+!
+!*********************  MODEL TEST OUTPUT  **************************************
+!
+!
+COMPUTE
+STOP
+!
+!

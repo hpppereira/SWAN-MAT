@@ -1,0 +1,84 @@
+!***********************  HEADING  ****************************************
+Project 'SWAN stationaty' '1'
+!
+! Testes com condicoes estacionarias para o Rio de Janeiro
+!
+! Date of simulation: arbitrary, different wind and wave conditions
+!
+! No currents
+! Winds
+! Boundary Hs, tp and Dir from global model or constant
+!
+!*********************  MODEL Input  **************************************
+!
+! Nautical convention for wind and wave directions = 'from' CW from North
+!
+SET NAUT
+COORD SPHE
+!
+!*********************  MODEL GRID Input  **************************************
+!
+!MODE NONST TWOD
+MODE STAT TWOD
+!
+!CGRID REG 50958 55661 0 309126 111322 617 221 CIR 12 0.03 1
+!CGRID REG -46.5 -24.0 0 2.78 1.002 617 221 CIR 12 0.03 1
+!CGRID REG -46.5 -24.0 0 2.78 1.002 617 221 CIR 24 0.03 1
+CGRID REG -43.5 -23.2 0 2.78 1.002 617 221 CIR 24 0.03 1
+!
+!
+! novo
+!INPGRID BOTTOM -46.0 -25.0 0 20 9 0.00833 0.00833 EXC -9999.99
+!INPGRID BOTTOM -46.5 -25.0 0 617 221 0.00833 0.00833 EXC -9999.99
+!
+!INPGRID BOTTOM -43.5 -23.2 0 617 221 0.00833 0.00833 EXC -9999.99
+!READINP BOTTOM 1 '.\Inputs\Bathymetry.bot' 1 FREE
+!
+! velho
+INP BOT 211 231 0 959 479 423 463
+READ BOT -1 '.\Inputs\Bathymetry.bot' 
+!
+!
+!INP WI 0 0 0 8 4 51521 55661 NONSTAT 20241101 6 HR 20241130
+!READ WI 1 SERI '.\Inputs\WInd\WindSeries.wndini' 
+!
+!
+! Optional steady wind
+WIND 5 80.
+!
+!
+! Boundary wave input - JONSWAP spectrum with Hs = 2m, Tp = 9s,
+! mean direction = 80 (from), spread = 15 (swell)
+!
+!
+BOUN SHAP JON PEAK DSPR POW
+BOUN SIDE E CON PAR 1 14. 180. 15
+BOUN SIDE W CON PAR 1 14. 180. 15
+BOUN SIDE S CON PAR 1 14. 180. 15
+!
+!
+GEN3
+BREA
+FRIC MAD
+!
+!
+!
+!*********************  MODEL GRID Input  **************************************
+!
+GROUP 'grid1' 1 200 1 90
+!
+! Output points in problem coordinates
+BLOCK 'grid1' NOHEAD 'Outputs/RJ_stat_3m14s180d15d_param.mat' LAY 1 DEP HS TPS
+BLOCK 'grid1' NOHEAD 'Outputs/RJ_stat_3m14s180d15d_grid.mat' XP YP
+BLOCK 'grid1' NOHEAD 'Outputs/BOT.mat' LAY 3 BOTL 1
+!
+!
+!
+!
+!*********************  MODEL TEST OUTPUT  **************************************
+!
+!
+COMPUTE
+STOP
+!
+!

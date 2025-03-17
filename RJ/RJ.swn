@@ -3,8 +3,8 @@ Project 'Jan Run' '1'
 !*********************  MODEL Input  **************************************
 MODE NONST TWOD
 CGRID REG 50958 55661 0 309126 111322 617 221 CIR 12 0.03 1
-INP BOT 211 231 0 959 479 423 463
-READ BOT -1 '.\Inputs\Bathymetry.bot' 
+INP BOT 102131 55893 0 479 239 424 463
+READ BOT -1 '.\Inputs\RJ_batimetria1.bot' 
 INP WI 0 0 0 8 4 51521 55661 NONSTAT 20241101 6 HR 20241130
 READ WI 1 SERI '.\Inputs\WInd\WindSeries.wndini' 
 !*********************** Boundary Conditions *******************************

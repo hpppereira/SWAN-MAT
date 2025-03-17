@@ -5,10 +5,10 @@ function []=GeneratingBathymetryGebco()
 
 %Bathymetry
 % BOT=ncread('NCfiles\bathymetry.nc','elevation');
-BOT=ncread('NCfiles\batimeria_rj_gebco2024.nc','elevation');
+BOT=ncread('NCfiles\batimetria_rj_gebco2024.nc','elevation');
 BOT=BOT.';
 BOT=flipud(BOT);
-BathymetryID = fopen('Inputs\Bathymetry.bot','w');
+BathymetryID = fopen('Inputs\RJ_batimetria.bot','w');
 
 for i=1:length(BOT(:,1))
     
